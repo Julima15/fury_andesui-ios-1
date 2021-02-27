@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AndesSliderViewDefault" customModule="AndesUI">
+            <connections>
+                <outlet property="componentView" destination="iN0-l3-epB" id="pJc-XA-8DK"/>
+                <outlet property="sliderView" destination="nOu-3p-M79" id="rtz-0H-RES"/>
+                <outlet property="toolTipLabel" destination="5vg-b0-yv1" id="HYL-2P-rih"/>
+                <outlet property="valueLabel" destination="3zA-F6-mBn" id="Sxs-5Y-lSY"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="387" height="120"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="toolTipLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5vg-b0-yv1">
+                    <rect key="frame" x="143" y="15" width="100" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="valueLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3zA-F6-mBn">
+                    <rect key="frame" x="0.0" y="71" width="82" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="nOu-3p-M79">
+                    <rect key="frame" x="8" y="42" width="371" height="22"/>
+                </slider>
+            </subviews>
+            <constraints>
+                <constraint firstItem="3zA-F6-mBn" firstAttribute="top" secondItem="nOu-3p-M79" secondAttribute="bottom" constant="8" id="3ab-i7-dF4"/>
+                <constraint firstAttribute="trailing" secondItem="nOu-3p-M79" secondAttribute="trailing" constant="10" id="F20-KU-UZH"/>
+                <constraint firstItem="nOu-3p-M79" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="UrC-es-qHD"/>
+                <constraint firstItem="nOu-3p-M79" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="kyt-oR-emF"/>
+                <constraint firstItem="nOu-3p-M79" firstAttribute="top" secondItem="5vg-b0-yv1" secondAttribute="bottom" constant="6" id="wK8-4R-ycl"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="183.33333333333334" y="-176.11607142857142"/>
+        </view>
+    </objects>
+</document>
