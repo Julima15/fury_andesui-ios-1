@@ -12,13 +12,15 @@ import Foundation
 /// Used to define the colors of an AndesSlider
 @objc public enum AndesSliderType: Int, AndesEnumStringConvertible {
 
-    case success
-    case error
+    case simple
+    case icons
+    case limits
 
     public static func keyFor(_ value: AndesSliderType) -> String {
         switch value {
-        case .success: return "SUCCESS"
-        case .error: return "ERROR"
+        case .simple: return "SIMPLE"
+        case .icons: return "ICONS"
+        case .limits: return "LIMITS"
         }
     }
 }

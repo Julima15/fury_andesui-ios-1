@@ -9,19 +9,19 @@
 
 import Foundation
 
-/// used to define the ui of internal AndesSlider views
 internal struct AndesSliderViewConfig {
 
     var backgroundColor: UIColor?
-    var textColor: UIColor?
-
-	var thumbColor: UIColor?
-	var thumbBackgroundColor: UIColor?
+//	var leftIcon: AndesSliderIcon?
+//	var rightIcon: AndesSliderIcon?
+//	var sliderAmmount: AndesSliderLimit?
 
     init() {}
 
-    init(type: AndesSliderTypeProtocol, hierarchy: AndesSliderHierarchyProtocol) {
-        self.textColor = type.textColor
+	init(type: AndesSliderTypeProtocol, hierarchy: AndesSliderHierarchyProtocol) {
         self.backgroundColor = hierarchy.backgroundColor
+//		self.leftIcon = slider.leftIcon
+//		self.rightIcon = slider.rightIcon
+//		self.sliderAmmount = slider.sliderLimitValue
     }
 }

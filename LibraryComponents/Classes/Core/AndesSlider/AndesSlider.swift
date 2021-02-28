@@ -7,25 +7,45 @@
 //
 //
 
-import Foundation
+import UIKit
 
 @objc public class AndesSlider: UIView {
-    internal var contentView:  AndesSliderView!
-    
-    @objc public var type: AndesSliderType = .success {
+
+    internal var contentView: AndesSliderView!
+	private var config: AndesSliderViewConfig!
+
+	// MARK: - User properties
+
+    @objc public var type: AndesSliderType = .simple {
         didSet {
             updateContentView()
         }
     }
-    
+
     @objc public var hierarchy: AndesSliderHierarchy = .loud {
         didSet {
             updateContentView()
         }
     }
 
-	@objc public var state: AndesSliderState {
+	@objc public private(set) var leftIcon: AndesSliderIcon? {
+		didSet {
+			updateContentView()
+		}
+	}
+	@objc public private(set) var rightIcon: AndesSliderIcon? {
+		didSet {
+			updateContentView()
+		}
+	}
 
+	var sliderLimitValue: AndesSliderLimit!
+
+	// the current state of the slider
+	public private(set) var state: AndesSliderState = .idle {
+		didSet {
+			self.updateContentView()
+		}
 	}
 
     required init?(coder: NSCoder) {
@@ -38,9 +58,12 @@ import Foundation
         setup()
     }
 
-    @objc public init(type: AndesSliderType) {
+	@objc public init(type: AndesSliderType, leftIcon: AndesSliderIcon? = nil, rightIcon: AndesSliderIcon? = nil) {
         super.init(frame: .zero)
         self.type = type
+		self.leftIcon = leftIcon
+		self.rightIcon = rightIcon
+		// set config
         setup()
     }
 
@@ -67,13 +90,13 @@ import Foundation
     }
 
     private func updateContentView() {
-        let config = AndesSliderViewConfigFactory.provideInternalConfig(type: self.type, hierarchy: self.hierarchy)
+		let config = AndesSliderViewConfigFactory.provideInternalConfig(type: self.type, hierarchy: self.hierarchy)
         contentView.update(withConfig: config)
     }
 
     /// Should return a view depending on which modifier is selected
     private func provideView() -> AndesSliderView {
-        let config = AndesSliderViewConfigFactory.provideInternalConfig(type: self.type, hierarchy: self.hierarchy)
+		let config = AndesSliderViewConfigFactory.provideInternalConfig(type: self.type, hierarchy: self.hierarchy)
         return AndesSliderViewDefault(withConfig: config)
     }
 }

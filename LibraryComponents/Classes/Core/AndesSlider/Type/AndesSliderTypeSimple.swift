@@ -9,6 +9,6 @@
 
 import Foundation
 
-class AndesSliderTypeError: AndesSliderTypeProtocol {
-    var textColor: UIColor = UIColor.Andes.red500
+class AndesSliderTypeSimple: AndesSliderTypeProtocol {
+    
 }

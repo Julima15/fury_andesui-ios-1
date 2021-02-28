@@ -10,5 +10,7 @@ import Foundation
 internal protocol AndesSliderStateProtocol {
 
 	var isEnabled: Bool { get }
-
+	var sliderColor: UIColor { get }
+	var thumbBackgroundColor: UIColor { get }
+	var thumbColor: UIColor { get }
 }

@@ -8,5 +8,8 @@
 import Foundation
 
 internal struct AndesSliderStateIdle: AndesSliderStateProtocol {
-	public var isEnabled = true
+	var isEnabled = true
+	var sliderColor: UIColor = UIColor.Andes.gray100
+	var thumbBackgroundColor: UIColor = AndesStyleSheetManager.styleSheet.accentColor
+	var thumbColor: UIColor = UIColor.Andes.white
 }
