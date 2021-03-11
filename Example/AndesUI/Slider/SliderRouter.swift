@@ -7,3 +7,10 @@
 //
 
 import Foundation
+
+class SliderRouter: HomeRouterProtocol {
+	func route(from: UIViewController) {
+
+		from.navigationController?.pushViewController(SliderViewController(), animated: true)
+	}
+}

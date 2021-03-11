@@ -10,14 +10,16 @@
 import Foundation
 
 class AndesSliderTypeFactory {
-	static func provide(_ type: AndesSliderType, _ leftIcon: AndesSliderIcon, _ rightIcon: AndesSliderIcon, _ limitValue: AndesSliderLimit?) -> AndesSliderTypeProtocol {
+	static func provide(_ type: AndesSliderType?, _ leftIcon: AndesSliderIcon?, _ rightIcon: AndesSliderIcon?, _ limitValue: AndesSliderLimit?) -> AndesSliderTypeProtocol {
         switch type {
         case .simple:
             return AndesSliderTypeSimple()
         case .icons:
-			return AndesSliderTypeIcons(leftIcon: leftIcon, rightIcon: rightIcon)
-		case .limits:
-			return AndesSliderTypeLimits(limit: limitValue)
-        }
+            return AndesSliderTypeIcons(leftIcon: leftIcon, rightIcon: rightIcon)
+        case .limits:
+            return AndesSliderTypeLimits(limit: limitValue)
+		case .none:
+            return AndesSliderTypeSimple()
+		}
     }
 }

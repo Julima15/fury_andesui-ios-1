@@ -12,6 +12,7 @@ import UIKit
 @objc public class AndesSlider: UIView {
 
     internal var contentView: AndesSliderView!
+
 	private var config: AndesSliderViewConfig!
 
 	// MARK: - User properties
@@ -39,7 +40,10 @@ import UIKit
 		}
 	}
 
-	var sliderLimitValue: AndesSliderLimit!
+	// MARK: - Slider's Limit Values
+	var sliderMinValue: Int!
+
+	var sliderMaxValue: Int!
 
 	// the current state of the slider
 	public private(set) var state: AndesSliderState = .idle {
@@ -58,14 +62,16 @@ import UIKit
         setup()
     }
 
-	@objc public init(type: AndesSliderType, leftIcon: AndesSliderIcon? = nil, rightIcon: AndesSliderIcon? = nil) {
+	@objc public init(type: AndesSliderType, minValue: Int, maxValue: Int) {
         super.init(frame: .zero)
         self.type = type
-		self.leftIcon = leftIcon
-		self.rightIcon = rightIcon
+		self.sliderMinValue = minValue
+		self.sliderMaxValue = maxValue
 		// set config
         setup()
     }
+
+	// MARK: - Content View Setup
 
     private func setup() {
         translatesAutoresizingMaskIntoConstraints = false
@@ -90,13 +96,13 @@ import UIKit
     }
 
     private func updateContentView() {
-		let config = AndesSliderViewConfigFactory.provideInternalConfig(type: self.type, hierarchy: self.hierarchy)
-        contentView.update(withConfig: config)
+//		let config = AndesSliderViewConfigFactory.provideInternalConfig(type: self.type, hierarchy: self.hierarchy)
+//        contentView.update(withConfig: config)
     }
 
     /// Should return a view depending on which modifier is selected
     private func provideView() -> AndesSliderView {
-		let config = AndesSliderViewConfigFactory.provideInternalConfig(type: self.type, hierarchy: self.hierarchy)
+		let config = AndesSliderViewConfigFactory.provide(from: self)
         return AndesSliderViewDefault(withConfig: config)
     }
 }

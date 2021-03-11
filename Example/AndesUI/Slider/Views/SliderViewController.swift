@@ -7,3 +7,21 @@
 //
 
 import Foundation
+import AndesUI
+
+protocol SliderView: NSObject {
+
+}
+
+class SliderViewController: UIViewController, SliderView {
+
+	@IBOutlet weak var andesSlider: AndesSlider!
+
+	var type: AndesSliderType? = .simple
+
+	func viewdidLoad() {
+
+		self.title = "Andes Slider"
+
+	}
+}

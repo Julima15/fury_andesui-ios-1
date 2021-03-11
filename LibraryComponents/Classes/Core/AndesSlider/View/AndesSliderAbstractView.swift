@@ -81,7 +81,7 @@ class AndesSliderAbstractView: UIView, AndesSliderView {
     /// Override this method on each Badge View to setup its unique components
 
     func updateView() {
-        self.backgroundColor = config.backgroundColor
+
     }
 }
 

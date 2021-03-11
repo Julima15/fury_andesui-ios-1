@@ -24,6 +24,7 @@ enum TestappViews {
     case radioButton
     case tag
     case snackbar
+	case slider
     case card
     case thumbnail
     case textFieldsCode
@@ -71,6 +72,8 @@ class HomeAppRouter: HomeRouter {
             router = TagsRouter()
         case .snackbar:
             router = SnackbarRouter()
+		case .slider:
+			router = SliderRouter()
         case .card:
             router = CardRouter()
         case .thumbnail:
