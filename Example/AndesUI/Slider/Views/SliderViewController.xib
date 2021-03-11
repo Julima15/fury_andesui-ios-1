@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SliderViewController" customModule="AndesUI_DemoApp" customModuleProvider="target">
             <connections>
                 <outlet property="andesSlider" destination="6v6-YC-REb" id="eI4-uX-IZK"/>
+                <outlet property="view" destination="iN0-l3-epB" id="xUd-ZJ-wYb"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -20,21 +22,26 @@
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6v6-YC-REb" customClass="AndesSlider" customModule="AndesUI">
                     <rect key="frame" x="20" y="44" width="374" height="150"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="150" id="P1X-KF-gsV"/>
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="6v6-YC-REb" secondAttribute="trailing" constant="20" id="1cb-bn-orm"/>
                 <constraint firstItem="6v6-YC-REb" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="ISb-6v-Sm5"/>
                 <constraint firstItem="6v6-YC-REb" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="JpF-JR-qzr"/>
                 <constraint firstItem="6v6-YC-REb" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="fDi-H8-md9"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="141" y="154"/>
         </view>
     </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
