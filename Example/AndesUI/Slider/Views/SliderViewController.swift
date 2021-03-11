@@ -19,9 +19,8 @@ class SliderViewController: UIViewController, SliderView {
 
 	var type: AndesSliderType? = .simple
 
-	func viewdidLoad() {
-
+	override func viewDidLoad() {
+		super.viewDidLoad()
 		self.title = "Andes Slider"
-
 	}
 }
