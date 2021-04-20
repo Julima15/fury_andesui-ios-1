@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
     s.subspec 'Core' do |core|
         core.source_files = 'LibraryComponents/Classes/Core/**/*.{h,m,swift}'
         core.resource_bundle = {'AndesUIResources' => ['LibraryComponents/Classes/Core/**/*.{xib}',
-            'LibraryComponents/Resources/Core/Assets/AndesPaletteColors.xcassets', 'LibraryComponents/Resources/Core/Strings/*.lproj']}
+            'LibraryComponents/Resources/Core/Assets/AndesPaletteColors.xcassets', 'LibraryComponents/Resources/Core/Assets/Media.xcassets', 'LibraryComponents/Resources/Core/Strings/*.lproj']}
         
         # remove this if we start using remote strategy for icons
         core.dependency 'AndesUI/LocalIcons'

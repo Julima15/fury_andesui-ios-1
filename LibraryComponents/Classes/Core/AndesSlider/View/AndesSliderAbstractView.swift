@@ -73,8 +73,16 @@ class AndesSliderAbstractView: UIView, AndesSliderView {
 		self.valueLabelLeadingConstraint.constant = point.x
 		self.toolTipLabelLeadingConstraint.constant = point.x
 		self.delegate?.onValueChanged(value: Double(amount))
-		self.setThumbImage()
+		self.setHandleBehaviour()
 
+	}
+
+	@objc fileprivate func setHandleBehaviour() {
+		if sliderView.isHighlighted {
+			self.toolTipLabel.isHidden = false
+		} else if !sliderView.isHighlighted {
+			self.toolTipLabel.isHidden = true
+		}
 	}
 
 	func update(withConfig config: AndesSliderViewConfig) {
@@ -95,6 +103,8 @@ class AndesSliderAbstractView: UIView, AndesSliderView {
         updateView()
 		setupSliderColor()
 		setThumbImage()
+		self.toolTipLabel.isHidden = true
+		self.sliderView.addTarget(self, action: #selector(self.setHandleBehaviour), for: [.touchCancel])
 
     }
 
@@ -116,9 +126,7 @@ class AndesSliderAbstractView: UIView, AndesSliderView {
 	func setThumbImage() {
 
 		let normal = UIImage(named: "sliderBlueThumb", in: AndesBundle.bundle(), compatibleWith: nil)
-//		sliderView.setThumbImage(normal, for: .normal)
 		let highlighted = UIImage(named: "sliderGrayThumb", in: AndesBundle.bundle(), compatibleWith: nil)
-//		sliderView.setThumbImage(highlighted, for: .highlighted)
 		self.sliderView.setThumbImage(normal, for: .normal)
 		self.sliderView.setThumbImage(highlighted, for: .highlighted)
 	}
