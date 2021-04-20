@@ -12,9 +12,7 @@ import Foundation
 internal class AndesSliderViewConfigFactory {
 
 	// the sliderViewConfigFactory contains every property factory from the slider, which will return a SliderViewConfig (an internal struct with every property)
-	static func provide(from slider: AndesSlider) -> AndesSliderViewConfig {
-
-		// set slider's properties
+	static func provide(type: AndesSliderType, minValue: Double, maxValue: Double) -> AndesSliderViewConfig {
 
 		return AndesSliderViewConfig()
 	}
@@ -28,7 +26,3 @@ internal class AndesSliderViewConfigFactory {
 //        return config
 //    }
 }
-
-// var leftIcon: AndesSliderIcon?
-// var rightIcon: AndesSliderIcon?
-// var sliderAmmount: AndesSliderLimit?

@@ -10,5 +10,8 @@
 import Foundation
 
 internal protocol AndesSliderTypeProtocol {
-
+//	var leftIcon: String { get }
+//	var rightIcon: String { get }
+//	var minAmount: Double { get }
+//	var maxAmount: Double { get }
 }

@@ -11,12 +11,12 @@ import Foundation
 
 class AndesSliderTypeIcons: AndesSliderTypeProtocol {
 
-	var leftIcon: AndesSliderIcon?
-	var rightIcon: AndesSliderIcon?
+	var leftIcon: String?
+	var rightIcon: String?
 
 	init() { }
 
-	init(leftIcon: AndesSliderIcon?, rightIcon: AndesSliderIcon?) {
+	init(leftIcon: String?, rightIcon: String?) {
 		self.leftIcon = leftIcon
 		self.rightIcon = rightIcon
 	}

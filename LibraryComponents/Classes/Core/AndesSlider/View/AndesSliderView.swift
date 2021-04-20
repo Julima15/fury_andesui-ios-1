@@ -12,9 +12,10 @@ import Foundation
 /**
  Internal protocol that specifies the behaviour a view must provide to be a valid representation of an AndesSlider
  */
-internal protocol AndesSliderView: UIView {
+protocol AndesSliderView: UIView {
 
-    func update(withConfig config: AndesSliderViewConfig)
-	func onValueChanged(value: Int)
+	var delegate: AndesSliderViewDelegate? { get set }
+	var config: AndesSliderViewConfig { get set }
 
+	func update(withConfig config: AndesSliderViewConfig)
 }

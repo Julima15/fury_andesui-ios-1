@@ -11,22 +11,21 @@ import Foundation
 
 internal struct AndesSliderViewConfig {
 
-//    var backgroundColor: UIColor?
-//	var leftIcon: AndesSliderIcon?
-//	var rightIcon: AndesSliderIcon?
-//	var sliderAmmount: AndesSliderLimit?
+	var leftIcon: String? = ""
+	var rightIcon: String? = ""
+	var minValue: Double! = 0
+	var maxValue: Double! = 100
+	var type: AndesSliderType = .simple
+	var state: AndesSliderStateProtocol! = AndesSliderStateIdle()
 
-//	var minValue: Int
-//	var maxValue: Int
+	init() { }
 
-//	init(type: AndesSliderTypeProtocol) {
-//		self.leftIcon = type.leftIcon
-//		self.rightIcon = type.rightIcon
-//		self.sliderAmmount = type.sliderLimitValue
-//    }
-
-//	init(minValue: Int, maxValue: Int) {
-//		self.minValue = minValue
-//		self.maxValue = maxValue
-//	}
+	init(for slider: AndesSlider) {
+		self.minValue = slider.sliderMinValue as? Double ?? 0
+		self.maxValue = slider.sliderMaxValue as? Double ?? 100
+		self.leftIcon = slider.leftIcon
+		self.rightIcon = slider.rightIcon
+		self.type = slider.type
+		self.state = AndesSliderStateFactory.provideState(key: slider.state)
+    }
 }

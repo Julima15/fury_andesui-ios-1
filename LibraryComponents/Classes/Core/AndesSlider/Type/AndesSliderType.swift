@@ -11,7 +11,6 @@ import Foundation
 
 /// Used to define the colors of an AndesSlider
 @objc public enum AndesSliderType: Int, AndesEnumStringConvertible {
-
     case simple
     case icons
     case limits

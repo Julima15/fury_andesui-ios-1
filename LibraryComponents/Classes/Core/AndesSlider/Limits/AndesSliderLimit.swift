@@ -8,10 +8,10 @@
 import Foundation
 
 @objc public class AndesSliderLimit: NSObject {
-	@objc public private(set) var minValue: Int
-	@objc public private(set) var maxValue: Int
+	@objc public var minValue: String
+	@objc public var maxValue: String
 
-	@objc public init(minValue: Int, maxValue: Int) {
+	@objc public init(minValue: String, maxValue: String) {
 		self.minValue = minValue
 		self.maxValue = maxValue
 	}

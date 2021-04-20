@@ -22,5 +22,9 @@ class SliderViewController: UIViewController, SliderView {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		self.title = "Andes Slider"
+
+		self.andesSlider.sliderMinValue = 1
+		self.andesSlider.sliderMaxValue = 200
+
 	}
 }

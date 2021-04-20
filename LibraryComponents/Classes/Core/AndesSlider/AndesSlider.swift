@@ -10,10 +10,7 @@
 import UIKit
 
 @objc public class AndesSlider: UIView {
-
     internal var contentView: AndesSliderView!
-
-	private var config: AndesSliderViewConfig!
 
 	// MARK: - User properties
 
@@ -23,30 +20,34 @@ import UIKit
         }
     }
 
-    @objc public var hierarchy: AndesSliderHierarchy = .loud {
-        didSet {
-            updateContentView()
-        }
-    }
+//	@objc public var valueLable: Int
+	@objc public var sliderLimits: AndesSliderLimit?
 
-	@objc public private(set) var leftIcon: AndesSliderIcon? {
+	@objc public var leftIcon: String? {
 		didSet {
 			updateContentView()
 		}
 	}
-	@objc public private(set) var rightIcon: AndesSliderIcon? {
+	@objc public var rightIcon: String? {
 		didSet {
 			updateContentView()
 		}
 	}
 
 	// MARK: - Slider's Limit Values
-	var sliderMinValue: Int!
-
-	var sliderMaxValue: Int!
+	@objc public var sliderMinValue: NSNumber? {
+		didSet {
+			updateContentView()
+		}
+	}
+	@objc public var sliderMaxValue: NSNumber? {
+		didSet {
+			updateContentView()
+		}
+	}
 
 	// the current state of the slider
-	public private(set) var state: AndesSliderState = .idle {
+	@objc public var state: AndesSliderState = .idle {
 		didSet {
 			self.updateContentView()
 		}
@@ -62,11 +63,9 @@ import UIKit
         setup()
     }
 
-	@objc public init(type: AndesSliderType, minValue: Int, maxValue: Int) {
+	@objc public init(type: AndesSliderType, minValue: Double, maxValue: Double) {
         super.init(frame: .zero)
         self.type = type
-		self.sliderMinValue = minValue
-		self.sliderMaxValue = maxValue
 		// set config
         setup()
     }
@@ -76,7 +75,13 @@ import UIKit
     private func setup() {
         translatesAutoresizingMaskIntoConstraints = false
         self.backgroundColor = .clear
-        drawContentView(with: provideView())
+		let config = AndesSliderViewConfig(for: self)
+		contentView = AndesSliderAbstractView(withConfig: config, delegate: self)
+		self.addSubview(contentView)
+		contentView.pinToSuperview()
+		self.sliderMinValue = NSNumber(value: config.minValue)
+		self.sliderMaxValue = NSNumber(value: config.maxValue)
+//        drawContentView(with: provideView())
     }
 
     private func drawContentView(with newView: AndesSliderView) {
@@ -96,15 +101,21 @@ import UIKit
     }
 
     private func updateContentView() {
-//		let config = AndesSliderViewConfigFactory.provideInternalConfig(type: self.type, hierarchy: self.hierarchy)
-//        contentView.update(withConfig: config)
+		let config = AndesSliderViewConfig(for: self)
+        contentView.update(withConfig: config)
     }
 
     /// Should return a view depending on which modifier is selected
     private func provideView() -> AndesSliderView {
-		let config = AndesSliderViewConfigFactory.provide(from: self)
-        return AndesSliderViewDefault(withConfig: config)
+		let config = AndesSliderViewConfig(for: self)
+		return AndesSliderViewDefault(withConfig: config, delegate: self)
     }
+}
+
+extension AndesSlider: AndesSliderViewDelegate {
+	func onValueChanged(value: Double) {
+		debugPrint("[AndesSlider] - AndesSliderViewDelegate value changed")
+	}
 }
 
 // MARK: - IB interface
@@ -116,16 +127,6 @@ public extension AndesSlider {
         }
         get {
             return self.type.toString()
-        }
-    }
-
-    @available(*, unavailable, message: "This property is reserved for Interface Builder. Use 'hierarchy' instead.")
-    @IBInspectable var ibHierarchy: String {
-        set(val) {
-            self.hierarchy = AndesSliderHierarchy.checkValidEnum(property: "IB hierarchy", key: val)
-        }
-        get {
-            return self.hierarchy.toString()
         }
     }
 }

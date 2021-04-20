@@ -9,11 +9,11 @@ import Foundation
 
 internal struct AndesSliderTypeLimits: AndesSliderTypeProtocol {
 
-	var min: Int?
-	var max: Int?
+	var min: String
+	var max: String
 
-	init(limit: AndesSliderLimit?) {
-		self.min = limit?.minValue
-		self.max = limit?.maxValue
+	init(limit: AndesSliderLimit) {
+		self.min = limit.minValue
+		self.max = limit.maxValue
 	}
 }
