@@ -25,7 +25,7 @@
             <rect key="frame" x="0.0" y="0.0" width="130" height="48"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Checkbox" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vNJ-co-emm">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Checkbox" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vNJ-co-emm">
                     <rect key="frame" x="28" y="12" width="74" height="24"/>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <nil key="textColor"/>
@@ -58,16 +58,16 @@
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="tab-mw-4wG" secondAttribute="trailing" id="7oL-SF-lhq"/>
                 <constraint firstItem="vNJ-co-emm" firstAttribute="leading" secondItem="dhw-ue-pA7" secondAttribute="trailing" priority="750" constant="12" id="8DS-id-H6m"/>
+                <constraint firstItem="dhw-ue-pA7" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="16" id="Bkb-Ea-HKb"/>
+                <constraint firstItem="cJx-ya-F6a" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="16" id="G7t-dE-4i1"/>
                 <constraint firstAttribute="bottom" secondItem="tab-mw-4wG" secondAttribute="bottom" id="Nyq-NM-SSm"/>
                 <constraint firstItem="tab-mw-4wG" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="P8C-a4-d3V"/>
-                <constraint firstItem="cJx-ya-F6a" firstAttribute="centerY" secondItem="vNJ-co-emm" secondAttribute="centerY" id="QJS-dp-Xol"/>
                 <constraint firstItem="cJx-ya-F6a" firstAttribute="leading" secondItem="vNJ-co-emm" secondAttribute="trailing" priority="750" constant="12" id="Qge-6P-F47"/>
                 <constraint firstItem="vNJ-co-emm" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="12" id="SiN-bV-Ca4"/>
                 <constraint firstAttribute="trailing" secondItem="vNJ-co-emm" secondAttribute="trailing" priority="250" constant="12" id="hp5-bY-WMe"/>
                 <constraint firstItem="dhw-ue-pA7" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ipn-nE-ayK"/>
                 <constraint firstAttribute="bottom" secondItem="vNJ-co-emm" secondAttribute="bottom" constant="12" id="lp2-ee-WAO"/>
                 <constraint firstItem="tab-mw-4wG" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="nW0-i3-N6O"/>
-                <constraint firstItem="dhw-ue-pA7" firstAttribute="centerY" secondItem="vNJ-co-emm" secondAttribute="centerY" id="og3-jD-jiK"/>
                 <constraint firstAttribute="trailing" secondItem="cJx-ya-F6a" secondAttribute="trailing" id="slR-He-nhZ"/>
                 <constraint firstItem="vNJ-co-emm" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" priority="250" constant="12" id="wyf-lI-yn5"/>
             </constraints>

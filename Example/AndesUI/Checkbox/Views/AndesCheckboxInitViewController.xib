@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -35,7 +36,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xP0-qj-BMd">
-                            <rect key="frame" x="0.0" y="184" width="49.5" height="21"/>
+                            <rect key="frame" x="0.0" y="184" width="49" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -75,14 +76,14 @@
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vMl-m8-3vz">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vMl-m8-3vz">
                             <rect key="frame" x="8" y="327" width="51" height="30"/>
                             <state key="normal" title="Update"/>
                             <connections>
                                 <action selector="updateTapped:" destination="-1" eventType="touchUpInside" id="o92-gd-Gmn"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ord-lb-YFR">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ord-lb-YFR">
                             <rect key="frame" x="270" y="327" width="36" height="30"/>
                             <state key="normal" title="Clear"/>
                             <connections>
@@ -118,7 +119,7 @@
                 </view>
                 <view contentMode="scaleToFill" placeholderIntrinsicWidth="150" placeholderIntrinsicHeight="50" translatesAutoresizingMaskIntoConstraints="NO" id="pOA-yv-0Vh" customClass="AndesCheckbox" customModule="AndesUI">
                     <rect key="frame" x="132" y="174" width="150" height="50"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="string" keyPath="title" value="Andes Checkbox"/>
                         <userDefinedRuntimeAttribute type="string" keyPath="ibType" value="idle"/>
@@ -127,8 +128,11 @@
                     </userDefinedRuntimeAttributes>
                 </view>
             </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="pOA-yv-0Vh" secondAttribute="trailing" constant="16" id="E7E-qW-sXx"/>
+                <constraint firstItem="pOA-yv-0Vh" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="GTz-tt-RFm"/>
                 <constraint firstItem="avQ-9z-Y18" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="76" id="QA5-Qi-yMA"/>
                 <constraint firstItem="pOA-yv-0Vh" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="130" id="QLi-ab-nbj"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="avQ-9z-Y18" secondAttribute="bottom" id="VTZ-cM-pNM"/>
@@ -137,8 +141,12 @@
                 <constraint firstItem="avQ-9z-Y18" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="oaA-Yc-X4n"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="avQ-9z-Y18" secondAttribute="trailing" constant="50" id="rpK-fM-XEc"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="137.68115942028987" y="108.48214285714285"/>
         </view>
     </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
