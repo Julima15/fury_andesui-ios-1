@@ -139,7 +139,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" placeholderIntrinsicWidth="150" placeholderIntrinsicHeight="50" translatesAutoresizingMaskIntoConstraints="NO" id="pOA-yv-0Vh" customClass="AndesCheckbox" customModule="AndesUI">
-                    <rect key="frame" x="132" y="174" width="150" height="50"/>
+                    <rect key="frame" x="50" y="174" width="314" height="50"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="string" keyPath="title" value="Andes Checkbox"/>
@@ -152,13 +152,12 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="pOA-yv-0Vh" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="5QK-We-Pin"/>
                 <constraint firstItem="avQ-9z-Y18" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="76" id="QA5-Qi-yMA"/>
                 <constraint firstItem="pOA-yv-0Vh" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="130" id="QLi-ab-nbj"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="avQ-9z-Y18" secondAttribute="bottom" id="VTZ-cM-pNM"/>
                 <constraint firstItem="avQ-9z-Y18" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="50" id="fAT-Su-urH"/>
-                <constraint firstItem="pOA-yv-0Vh" firstAttribute="centerX" secondItem="avQ-9z-Y18" secondAttribute="centerX" id="fr0-Eh-3Ud"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="pOA-yv-0Vh" secondAttribute="trailing" constant="16" id="iQT-ZX-ljO"/>
+                <constraint firstItem="pOA-yv-0Vh" firstAttribute="trailing" secondItem="avQ-9z-Y18" secondAttribute="trailing" id="gXJ-nY-VSr"/>
+                <constraint firstItem="pOA-yv-0Vh" firstAttribute="leading" secondItem="avQ-9z-Y18" secondAttribute="leading" id="jm8-1n-5iD"/>
                 <constraint firstItem="avQ-9z-Y18" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="oaA-Yc-X4n"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="avQ-9z-Y18" secondAttribute="trailing" constant="50" id="rpK-fM-XEc"/>
             </constraints>
