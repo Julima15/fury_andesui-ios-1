@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -11,8 +12,8 @@
             <connections>
                 <outlet property="componentView" destination="iN0-l3-epB" id="pJc-XA-8DK"/>
                 <outlet property="sliderView" destination="nOu-3p-M79" id="rtz-0H-RES"/>
-                <outlet property="toolTipLabel" destination="AYj-NN-vnp" id="03O-CF-DjT"/>
-                <outlet property="toolTipLabelLeadingConstraint" destination="ApZ-uT-q4m" id="0xk-8h-KNj"/>
+                <outlet property="tooltipBackgroundView" destination="g8k-go-sJF" id="hf6-2s-30w"/>
+                <outlet property="tooltipLeadingConstraint" destination="xyx-AX-ZI1" id="OyY-Qc-3rR"/>
                 <outlet property="valueLabel" destination="1FA-bz-C5c" id="Gaf-e4-SWL"/>
                 <outlet property="valueLabelLeadingConstraint" destination="xr2-t1-b78" id="Mds-O6-43n"/>
             </connections>
@@ -26,13 +27,13 @@
                     <rect key="frame" x="0.0" y="0.0" width="387" height="100"/>
                     <subviews>
                         <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="nOu-3p-M79">
-                            <rect key="frame" x="3" y="35" width="381" height="31"/>
+                            <rect key="frame" x="18" y="35" width="351" height="31"/>
                             <connections>
                                 <action selector="sliderAction:" destination="-1" eventType="valueChanged" id="Tak-LM-VFC"/>
                             </connections>
                         </slider>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="valueLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1FA-bz-C5c">
-                            <rect key="frame" x="5" y="70" width="60.5" height="20"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="valueLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1FA-bz-C5c">
+                            <rect key="frame" x="20" y="70" width="60.5" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="20" id="Zfe-O2-K3c"/>
                             </constraints>
@@ -40,26 +41,25 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="toolTipLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AYj-NN-vnp">
-                            <rect key="frame" x="5" y="9" width="80" height="20"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g8k-go-sJF">
+                            <rect key="frame" x="-5" y="-3" width="70" height="32"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="20" id="eLu-k0-Osv"/>
+                                <constraint firstAttribute="width" constant="70" id="4FY-IN-yFj"/>
+                                <constraint firstAttribute="height" constant="32" id="cPv-GV-4yR"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstItem="nOu-3p-M79" firstAttribute="top" secondItem="g8k-go-sJF" secondAttribute="bottom" constant="6" id="53j-Fd-Owe"/>
                         <constraint firstItem="nOu-3p-M79" firstAttribute="centerY" secondItem="pHy-8C-t2w" secondAttribute="centerY" id="9Vw-7B-fod"/>
-                        <constraint firstItem="AYj-NN-vnp" firstAttribute="leading" secondItem="nOu-3p-M79" secondAttribute="leading" id="ApZ-uT-q4m"/>
-                        <constraint firstAttribute="trailing" secondItem="nOu-3p-M79" secondAttribute="trailing" constant="5" id="a4S-Hf-H3Y"/>
-                        <constraint firstItem="nOu-3p-M79" firstAttribute="top" secondItem="AYj-NN-vnp" secondAttribute="bottom" constant="6" id="ikX-bq-gGa"/>
+                        <constraint firstAttribute="trailing" secondItem="nOu-3p-M79" secondAttribute="trailing" constant="20" id="a4S-Hf-H3Y"/>
                         <constraint firstItem="nOu-3p-M79" firstAttribute="centerX" secondItem="pHy-8C-t2w" secondAttribute="centerX" id="joR-qg-AX3"/>
                         <constraint firstItem="1FA-bz-C5c" firstAttribute="top" secondItem="nOu-3p-M79" secondAttribute="bottom" constant="5" id="m4f-fb-QpN"/>
-                        <constraint firstItem="nOu-3p-M79" firstAttribute="leading" secondItem="pHy-8C-t2w" secondAttribute="leading" constant="5" id="smu-ma-k5u"/>
+                        <constraint firstItem="nOu-3p-M79" firstAttribute="leading" secondItem="pHy-8C-t2w" secondAttribute="leading" constant="20" id="smu-ma-k5u"/>
                         <constraint firstItem="1FA-bz-C5c" firstAttribute="leading" secondItem="nOu-3p-M79" secondAttribute="leading" id="xr2-t1-b78"/>
+                        <constraint firstItem="g8k-go-sJF" firstAttribute="leading" secondItem="pHy-8C-t2w" secondAttribute="leading" constant="-5" id="xyx-AX-ZI1"/>
                     </constraints>
                 </view>
             </subviews>
@@ -73,4 +73,9 @@
             <point key="canvasLocation" x="183.33333333333334" y="-169.41964285714286"/>
         </view>
     </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

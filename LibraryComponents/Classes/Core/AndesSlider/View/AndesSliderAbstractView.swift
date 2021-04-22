@@ -13,11 +13,20 @@ class AndesSliderAbstractView: UIView, AndesSliderView {
 
     @IBOutlet weak var componentView: UIView!
 	@IBOutlet weak var sliderView: UISlider!
-	@IBOutlet weak var toolTipLabel: UILabel!
 	@IBOutlet weak var valueLabel: UILabel!
+	@IBOutlet weak var tooltipBackgroundView: UIView!
 
+	@IBOutlet weak var tooltipLeadingConstraint: NSLayoutConstraint!
 	@IBOutlet weak var valueLabelLeadingConstraint: NSLayoutConstraint!
-	@IBOutlet weak var toolTipLabelLeadingConstraint: NSLayoutConstraint!
+
+	let tooltipLabel: UILabel = {
+		let label = UILabel()
+		label.text = "$ 0"
+		label.contentMode = .center
+		label.numberOfLines = 0
+		label.setAndesStyle(style: AndesFontStyle(textColor: AndesStyleSheetManager.styleSheet.textColorWhite, font: AndesStyleSheetManager.styleSheet.regularSystemFont(size: 14), lineSpacing: 0))
+		return label
+	}()
 
 	override func awakeFromNib() {
 		super.awakeFromNib()
@@ -59,29 +68,39 @@ class AndesSliderAbstractView: UIView, AndesSliderView {
 	override func layoutSubviews() {
 		super.layoutSubviews()
 		self.componentView.layoutIfNeeded()
-		let point = setUISliderThumbValueWithLabel(slider: self.sliderView)
-		self.valueLabelLeadingConstraint.constant = point.x
+		let valuePoint = setSliderThumbValueWithLabel(slider: self.sliderView)
+		let tooltipPoint = setSliderValueForTooltip(slider: self.sliderView)
+		self.valueLabelLeadingConstraint.constant = valuePoint.x
+		self.tooltipLeadingConstraint.constant = tooltipPoint.x
 		super.layoutSubviews()
 	}
 
 	@IBAction func sliderAction(_ sender: UISlider) {
 		let amount = Int(sender.value.rounded())
 		valueLabel.text = "$\(amount)"
-		toolTipLabel.text = "$\(amount)"
-		let point = setUISliderThumbValueWithLabel(slider: sender)
+		tooltipLabel.text = "$\(amount)"
+		let valueLabelPoint = setSliderThumbValueWithLabel(slider: sender)
+		let tooltipPoint = setSliderValueForTooltip(slider: sender)
+
 		print("[AndesSlider] - sliderAction: \(sender.value.rounded())")
-		self.valueLabelLeadingConstraint.constant = point.x
-		self.toolTipLabelLeadingConstraint.constant = point.x
+		print("[AndesSlider] - sliderAction-valueLabelPoint \(valueLabelPoint)")
+		print("[AndesSlider] - sliderAction-tooltipLabelPoint: \(tooltipPoint)")
+
+		self.valueLabelLeadingConstraint.constant = valueLabelPoint.x
+		self.tooltipLeadingConstraint.constant = tooltipPoint.x
 		self.delegate?.onValueChanged(value: Double(amount))
 		self.setHandleBehaviour()
 
 	}
 
 	@objc fileprivate func setHandleBehaviour() {
+
 		if sliderView.isHighlighted {
-			self.toolTipLabel.isHidden = false
+			self.tooltipBackgroundView.isHidden = false
+			self.valueLabel.isHidden = true
 		} else if !sliderView.isHighlighted {
-			self.toolTipLabel.isHidden = true
+			self.tooltipBackgroundView.isHidden = true
+			self.valueLabel.isHidden = false
 		}
 	}
 
@@ -98,27 +117,41 @@ class AndesSliderAbstractView: UIView, AndesSliderView {
 
     func setup() {
         loadNib()
-        translatesAutoresizingMaskIntoConstraints = false
+
+		translatesAutoresizingMaskIntoConstraints = false
         pinXibViewToSelf()
         updateView()
 		setupSliderColor()
 		setThumbImage()
-		self.toolTipLabel.isHidden = true
-		self.sliderView.addTarget(self, action: #selector(self.setHandleBehaviour), for: [.touchCancel])
-
+		setupTooltipBackgroundView()
+		self.tooltipBackgroundView.isHidden = true
+		self.sliderView.addTarget(self, action: #selector(self.setHandleBehaviour), for: [.allTouchEvents])
     }
 
+	func setupTooltipBackgroundView() {
+		self.tooltipBackgroundView.backgroundColor = UIColor.Andes.gray800
+		self.tooltipBackgroundView.layer.cornerRadius = 5
+		self.tooltipBackgroundView.contentMode = .center
+
+		setupTooltipLabel()
+	}
+
+	func setupTooltipLabel() {
+		self.tooltipBackgroundView.addSubview(self.tooltipLabel)
+		self.tooltipLabel.translatesAutoresizingMaskIntoConstraints = false
+		self.tooltipLabel.centerYAnchor.constraint(equalTo: self.tooltipBackgroundView.centerYAnchor).isActive = true
+		self.tooltipLabel.centerXAnchor.constraint(equalTo: self.tooltipBackgroundView.centerXAnchor).isActive = true
+	}
+
 	func setupSliderColor() {
+
 		self.sliderView.minimumTrackTintColor = UIColor.Andes.gray070
 		self.sliderView.maximumTrackTintColor = UIColor.Andes.gray070
 	}
 
-    /// Override this method on each Badge View to setup its unique components
-
     func updateView() {
 		self.valueLabel.text = "$\(sliderView.value.rounded())"
-		self.toolTipLabel.text = "$\(sliderView.value.rounded())"
-
+		self.tooltipLabel.text = "$\(sliderView.value.rounded())"
 		self.sliderView.minimumValue = Float(self.config.minValue)
 		self.sliderView.maximumValue = Float(self.config.maxValue)
     }
@@ -134,22 +167,21 @@ class AndesSliderAbstractView: UIView, AndesSliderView {
 
 extension AndesSliderAbstractView {
 
-	fileprivate func setUISliderThumbValueWithLabel(slider: UISlider) -> CGPoint {
+	fileprivate func setSliderThumbValueWithLabel(slider: UISlider) -> CGPoint {
 
 		let slidertTrack: CGRect = slider.trackRect(forBounds: slider.bounds)
 		let sliderThumbFrame: CGRect = slider.thumbRect(forBounds: slider.bounds, trackRect: slidertTrack, value: slider.value)
-		let point = CGPoint(x: sliderThumbFrame.origin.x + sliderThumbFrame.width/2 - self.valueLabel.frame.width / 2, y: valueLabel.center.y)
-		debugPrint("[AndesUI] - slidertTrack: \(slidertTrack)")
-		debugPrint("[AndesUI] - sliderFrame: \(sliderThumbFrame)")
+		let xValue: CGFloat = (sliderThumbFrame.origin.x + sliderThumbFrame.width/2 - self.valueLabel.frame.width/2).rounded(.up)
+		let point = CGPoint(x: xValue, y: self.valueLabel.center.y)
 		debugPrint("[AndesUI] - point \(point)")
-		debugPrint("[AndesUI] - self.sliderLabel.frame.width / 2: \(self.valueLabel.frame.width / 2)")
 		return point
 	}
 
 	fileprivate func setSliderValueForTooltip(slider: UISlider) -> CGPoint {
 		let sliderTrack: CGRect = slider.trackRect(forBounds: slider.bounds)
 		let sliderThumbFrame: CGRect = slider.thumbRect(forBounds: slider.bounds, trackRect: sliderTrack, value: slider.value)
-		let point = CGPoint(x: sliderThumbFrame.origin.x + sliderThumbFrame.width/2 - self.toolTipLabel.frame.width / 2, y: self.toolTipLabel.center.y)
+		let point = CGPoint(x: sliderThumbFrame.origin.x + sliderThumbFrame.width/2 - self.tooltipLabel.frame.width / 2, y: self.tooltipLabel.center.y)
 		return point
 	}
+
 }
