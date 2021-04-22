@@ -83,6 +83,7 @@ class AndesCheckboxDefaultView: UIView, AndesCheckboxView {
     func updateView() {
         clearView()
         self.label.text = config.title
+        self.label.numberOfLines = config.titleNumberOfLines
         updateBoxesViews()
         updateBoxesBorders()
         updateIcons()
