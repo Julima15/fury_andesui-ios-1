@@ -19,6 +19,7 @@ class AndesCheckboxInitViewController: UIViewController {
     @IBOutlet weak var typeTxt: UITextField!
     @IBOutlet weak var statusTxt: UITextField!
     @IBOutlet weak var alignTxt: UITextField!
+    @IBOutlet weak var numberOfLinesTxt: UITextField!
     @IBOutlet weak var checkboxTxt: UITextField!
 
     @IBOutlet weak var updateBtn: UIButton!
@@ -47,6 +48,8 @@ class AndesCheckboxInitViewController: UIViewController {
 
     @IBAction func updateTapped(_ sender: Any) {
         andesCheckbox.title = checkboxTxt.text
+        let numberOfLines = Int(numberOfLinesTxt.text ?? "1") ?? 1
+        andesCheckbox.titleNumberOfLines = numberOfLines
     }
 
     @IBAction func clearTapped(_ sender: Any) {

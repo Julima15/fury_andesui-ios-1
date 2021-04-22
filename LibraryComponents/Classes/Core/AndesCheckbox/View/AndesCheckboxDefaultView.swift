@@ -84,6 +84,7 @@ class AndesCheckboxDefaultView: UIView, AndesCheckboxView {
         clearView()
         self.label.text = config.title
         self.label.numberOfLines = config.titleNumberOfLines
+        self.label.lineBreakMode = .byTruncatingTail
         updateBoxesViews()
         updateBoxesBorders()
         updateIcons()
@@ -114,19 +115,19 @@ class AndesCheckboxDefaultView: UIView, AndesCheckboxView {
             self.leftBox.isHidden = false
             self.leftBox.backgroundColor = config.backgroundColor
             self.leftBox.layer.cornerRadius = config.cornerRadius
-            self.labelToTrailingConstraint.priority = .defaultHigh
-            self.labelToRightButtonConstraint.priority = .defaultLow
-            self.labelToLeftButtonConstraint.priority = .defaultHigh
-            self.labelToLeadingConstraint.priority = .defaultLow
+            // self.labelToTrailingConstraint.priority = .defaultHigh
+            // self.labelToRightButtonConstraint.priority = .defaultLow
+            // self.labelToLeftButtonConstraint.priority = .defaultHigh
+            // self.labelToLeadingConstraint.priority = .defaultLow
         } else {
             self.rightBox.isHidden = false
             self.leftBox.isHidden = true
             self.rightBox.backgroundColor = config.backgroundColor
             self.rightBox.layer.cornerRadius = config.cornerRadius
-            self.labelToTrailingConstraint.priority = .defaultLow
-            self.labelToRightButtonConstraint.priority = .defaultHigh
-            self.labelToLeftButtonConstraint.priority = .defaultLow
-            self.labelToLeadingConstraint.priority = .defaultHigh
+            // self.labelToTrailingConstraint.priority = .defaultLow
+            // self.labelToRightButtonConstraint.priority = .defaultHigh
+            // self.labelToLeftButtonConstraint.priority = .defaultLow
+           // self.labelToLeadingConstraint.priority = .defaultHigh
         }
     }
 
